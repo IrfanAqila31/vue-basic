@@ -17,9 +17,14 @@ const handleActive = () => {
     return 'Submit'
   }
 }
+
+const url = '/home'
 </script>
 
 <template>
+  <!-- menggunakana link dinamis -->
+  <a :href="url">Halaman Utama</a>
+
   <!-- menggunakan boolean atribut -->
   <!-- menggunakan ternerary operator dan menggunakan javascript expression -->
   <button v-bind="buttonAttributes">{{ isActive ? 'Loading' : 'Submit' }}</button>

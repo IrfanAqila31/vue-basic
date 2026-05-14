@@ -2,6 +2,9 @@
 import MainButton from './components/MainButton.vue'
 import OptionComponent from './components/OptionComponent.vue'
 import CompositionComponent from './components/CompositionComponent.vue'
+import ProfileCard from './components/ProfileCard.vue'
+import OrderStatus from './components/OrderStatus.vue'
+
 const blogPost = '<p style="color: red">Ini Blog</p>'
 const idBlog = 10
 const clasBlog = 'flex text-xl'
@@ -27,9 +30,16 @@ const clasBlog = 'flex text-xl'
   <p v-bind:id="idBlog">atribut binding id</p>
   <p :class="clasBlog">atribut binding class</p>
 
-
   <!-- menggunakan atribut boolean -->
   <MainButton />
+  <hr />
+  <br />
+  <!-- Latihan ProfilCard -->
+  <ProfileCard />
+  <hr />
+  <br />
+  <!-- Latihan OrderStatus -->
+  <OrderStatus />
 </template>
 
 <style scoped></style>
