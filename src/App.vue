@@ -12,7 +12,9 @@ const clasBlog = 'flex text-xl'
 
 <template>
   <h1>hello world</h1>
-  <MainButton />
+  <!-- menggunakan props -->
+  <MainButton title="Submit" disabled />
+  <MainButton title="Login" />
   <OptionComponent />
   <CompositionComponent />
 
