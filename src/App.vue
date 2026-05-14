@@ -4,6 +4,7 @@ import OptionComponent from './components/OptionComponent.vue'
 import CompositionComponent from './components/CompositionComponent.vue'
 import ProfileCard from './components/ProfileCard.vue'
 import OrderStatus from './components/OrderStatus.vue'
+import ProductBadge from './components/ProductBadge.vue'
 
 const blogPost = '<p style="color: red">Ini Blog</p>'
 const idBlog = 10
@@ -42,6 +43,13 @@ const clasBlog = 'flex text-xl'
   <br />
   <!-- Latihan OrderStatus -->
   <OrderStatus />
+  <hr />
+  <br />
+
+  <!-- latihan props -->
+  <ProductBadge category="Elektronik" isPromo />
+  <ProductBadge category="Baju" />
+  <ProductBadge />
 </template>
 
 <style scoped></style>
