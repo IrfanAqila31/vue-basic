@@ -18,6 +18,14 @@ const increment = () => {
   return count.value++
 }
 
+const decrement = () => {
+  return count.value--
+}
+
+const reset = () => {
+  count.value = 0
+}
+
 // menggunakan objeck reactive
 // const user = reactive({ name: 'irfan', age: 19 })
 
@@ -69,8 +77,13 @@ const user = reactive(['irfan', 'febri', 'jono', 'udin', 'joko', 'budi'])
   <br />
 
   <!-- Reactive state menggunakan ref-->
+  <!-- latihan menggunakan counter -->
 
-  <button @click="increment">{{ count }}</button>
+  <button @click="increment">Tambah</button>
+  <span>{{ count }}</span>
+  <button @click="decrement">Kurang</button>
+  <br />
+  <button @click="reset">Reset</button>
 
   <!-- Reactive state menggunakan reactive objek-->
   <div>
@@ -91,6 +104,8 @@ const user = reactive(['irfan', 'febri', 'jono', 'udin', 'joko', 'budi'])
 
   <hr />
   <br />
+
+  <!-- latihan counter -->
 </template>
 
 <style scoped></style>
