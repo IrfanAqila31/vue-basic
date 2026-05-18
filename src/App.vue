@@ -5,10 +5,24 @@ import CompositionComponent from './components/CompositionComponent.vue'
 import ProfileCard from './components/ProfileCard.vue'
 import OrderStatus from './components/OrderStatus.vue'
 import ProductBadge from './components/ProductBadge.vue'
+import { ref, reactive } from 'vue'
 
 const blogPost = '<p style="color: red">Ini Blog</p>'
 const idBlog = 10
 const clasBlog = 'flex text-xl'
+
+// menggunakan ref untuk
+const count = ref(0)
+
+const increment = () => {
+  return count.value++
+}
+
+// menggunakan objeck reactive
+// const user = reactive({ name: 'irfan', age: 19 })
+
+// menggunakan array
+const user = reactive(['irfan', 'febri', 'jono', 'udin', 'joko', 'budi'])
 </script>
 
 <template>
@@ -50,6 +64,33 @@ const clasBlog = 'flex text-xl'
   <ProductBadge category="Elektronik" isPromo />
   <ProductBadge category="Baju" />
   <ProductBadge />
+
+  <hr />
+  <br />
+
+  <!-- Reactive state menggunakan ref-->
+
+  <button @click="increment">{{ count }}</button>
+
+  <!-- Reactive state menggunakan reactive objek-->
+  <div>
+    <h1>{{ user.name }}</h1>
+    <h1>{{ user.age }}</h1>
+  </div>
+
+  <!-- Reactive state menggunakan reactive array-->
+  <div>
+    <h1>{{ user[1] }}</h1>
+    <ul>
+      <li v-for="(item, index) in user" :key="index">
+        {{ item }}
+      </li>
+    </ul>
+    <button @click="user.push('dokel')">Tambah</button>
+  </div>
+
+  <hr />
+  <br />
 </template>
 
 <style scoped></style>
