@@ -7,7 +7,7 @@ import OrderStatus from './components/OrderStatus.vue'
 import ProductBadge from './components/ProductBadge.vue'
 import WishlistBelanja from './components/WishlistBelanja.vue'
 import DaftarHobi from './components/DaftarHobi.vue'
-import { ref, reactive } from 'vue'
+import { ref, reactive, computed } from 'vue'
 
 const blogPost = '<p style="color: red">Ini Blog</p>'
 const idBlog = 10
@@ -33,6 +33,18 @@ const reset = () => {
 
 // menggunakan array
 const user = reactive(['irfan', 'febri', 'jono', 'udin', 'joko', 'budi'])
+
+// mencoba computed
+const author = reactive({
+  name: 'Irfan',
+  books: ['buku 1', 'buku 2', 'buku 3'],
+})
+
+// akan dirender ulang jika nilai reactive berubah
+const isPublished = computed(() => {
+  console.log('test')
+  return author.books.length > 0 ? 'yes' : 'no'
+})
 </script>
 
 <template>
@@ -112,6 +124,12 @@ const user = reactive(['irfan', 'febri', 'jono', 'udin', 'joko', 'budi'])
 
   <!-- latihan 2 daftar hobi -->
   <DaftarHobi namaPemilik="Irfan" />
+
+  <!-- mencoba comupted -->
+
+  <p>jumlah buku</p>
+  <span>{{ isPublished }}</span>
+  <button @click="increment">{{ count }}</button>
 </template>
 
 <style scoped></style>

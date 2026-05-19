@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, computed } from 'vue'
 
 const props = defineProps({
   namaPemilik: {
@@ -31,6 +31,20 @@ const hapusHobi = (index) => {
 }
 
 const Instruksi = '<p style="color: red">Tambahkan Hobi Kamu</p>'
+
+// latihan computed
+const satusHobi = computed(() => {
+  // ambil jumlah hobi
+  const jumlahHobi = daftarHobi.length
+  if (jumlahHobi === 0) {
+    return 'wah kamu belum punya hobi nih, ayo cari'
+    // jika jumlahHobi lebih besar sama dengan 1 dan jumlahHobi lebih kecil sama dengan 3, maka return hobu yang menarik
+  } else if (jumlahHobi >= 1 && jumlahHobi <= 3) {
+    return 'hobi yang menarik'
+  } else {
+    return 'kamu hobi banget ya, keren'
+  }
+})
 </script>
 
 <template>
@@ -39,7 +53,10 @@ const Instruksi = '<p style="color: red">Tambahkan Hobi Kamu</p>'
   <p v-html="Instruksi"></p>
   <input v-model="inputHobi" />
   <button @click="tambahHobi">Tambah Hobi</button>
-  <p v-if="daftarHobi.length === 0">Wah, Kamu belum ada hobi nih</p>
+  <!-- <p v-if="daftarHobi.length === 0">Wah, Kamu belum ada hobi nih</p> -->
+
+  <!-- latihan menggunakan computed -->
+  <p>{{ satusHobi }}</p>
 
   <p>Jumlah Hobi Kamu : {{ daftarHobi.length }}</p>
 
