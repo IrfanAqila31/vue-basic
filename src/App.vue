@@ -5,6 +5,8 @@ import CompositionComponent from './components/CompositionComponent.vue'
 import ProfileCard from './components/ProfileCard.vue'
 import OrderStatus from './components/OrderStatus.vue'
 import ProductBadge from './components/ProductBadge.vue'
+import WishlistBelanja from './components/WishlistBelanja.vue'
+import DaftarHobi from './components/DaftarHobi.vue'
 import { ref, reactive } from 'vue'
 
 const blogPost = '<p style="color: red">Ini Blog</p>'
@@ -105,7 +107,11 @@ const user = reactive(['irfan', 'febri', 'jono', 'udin', 'joko', 'budi'])
   <hr />
   <br />
 
-  <!-- latihan counter -->
+  <!-- latihan WishlistBelanja -->
+  <WishlistBelanja namaPemilik="Dokell" :limitBarang="10" />
+
+  <!-- latihan 2 daftar hobi -->
+  <DaftarHobi namaPemilik="Irfan" />
 </template>
 
 <style scoped></style>

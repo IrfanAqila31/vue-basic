@@ -1,4 +1,3 @@
-
 <!-- Lebih Simple Composition Component -->
 <script setup>
 const nama = 'Irfan'
