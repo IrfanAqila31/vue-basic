@@ -1,7 +1,9 @@
-<script setup></script>
+<script setup>
+import LatihanListRendering from './components/LatihanListRendering.vue'
+</script>
 
 <template>
-  <h1>tes</h1>
+  <LatihanListRendering />
 </template>
 
 <style></style>

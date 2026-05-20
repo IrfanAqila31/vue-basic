@@ -66,4 +66,7 @@ const satusHobi = computed(() => {
       <button @click="hapusHobi(index)">Hapus Hobi</button>
     </li>
   </ul>
+
+
+  <!--  -->
 </template>
