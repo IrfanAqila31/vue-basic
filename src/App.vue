@@ -37,7 +37,7 @@ const user = reactive(['irfan', 'febri', 'jono', 'udin', 'joko', 'budi'])
 // mencoba computed
 const author = reactive({
   name: 'Irfan',
-  books: ['buku 1', 'buku 2', 'buku 3'],
+  books: ['Buku Memasak', 'Buku Menggambar'],
 })
 
 // akan dirender ulang jika nilai reactive berubah
@@ -45,6 +45,9 @@ const isPublished = computed(() => {
   console.log('test')
   return author.books.length > 0 ? 'yes' : 'no'
 })
+
+// mencoba conditional rendering
+// const showAuthor = ref(true)
 </script>
 
 <template>
@@ -130,6 +133,10 @@ const isPublished = computed(() => {
   <p>jumlah buku</p>
   <span>{{ isPublished }}</span>
   <button @click="increment">{{ count }}</button>
+  <!-- mencoba conditional rendering -->
+  <h1 v-if="author.books.length === 0">BELUM ADA BUKU</h1>
+  <h1 v-else-if="author.books.length === 1">cukup buku</h1>
+  <h1 v-else>banyak buku</h1>
 </template>
 
 <style scoped></style>
