@@ -31,6 +31,9 @@ const props = defineProps({
     default: false,
   },
 })
+
+const disableColor = '#000'
+const availableColor = '#fff'
 </script>
 
 <template>
@@ -44,7 +47,30 @@ const props = defineProps({
   <!-- <button v-bind="buttonAttributes">{{ handleActive() }}</button> -->
 
   <!-- menggunakan props -->
-  <button :disabled="disabled">{{ props.title }}</button>
+  <!-- <button :disabled="disabled">{{ props.title }}</button> -->
+
+  <!-- mencoba menggunakan class dan style inline dinamis -->
+  <button
+    :disabled
+    class="button"
+    :class="{ disabled: disabled }"
+    :style="{ color: disabled ? disableColor : availableColor }"
+  >
+    {{ props.title }}
+  </button>
 </template>
 
-<style scoped></style>
+<style scoped>
+.button {
+  background-color: #42b983;
+  border: none;
+
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+.disabled {
+  opacity: 0.3;
+  background-color: grey;
+}
+</style>
