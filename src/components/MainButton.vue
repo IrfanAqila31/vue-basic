@@ -1,4 +1,5 @@
 <script setup>
+import { useAttrs } from 'vue'
 // const buttonDisabled = false
 
 // const buttonAttributes = {
@@ -19,6 +20,12 @@
 // }
 
 // const url = '/home'
+
+// Menonaktifkan pewarisan atribut otomatis dari parent ke root element komponen ini
+// defineOptions({ inheritAttrs: false })
+
+const attrs = useAttrs()
+console.log(attrs.style)
 
 // menggunakan props
 const props = defineProps({
@@ -50,7 +57,9 @@ const availableColor = '#fff'
   <!-- <button :disabled="disabled">{{ props.title }}</button> -->
 
   <!-- mencoba menggunakan class dan style inline dinamis -->
+  <label>ini button</label>
   <button
+    v-bind="$attrs"
     :disabled
     class="button"
     :class="{ disabled: disabled }"
