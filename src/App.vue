@@ -2,7 +2,7 @@
 import MainButton from './components/MainButton.vue'
 import LatihanListRendering from './components/LatihanListRendering.vue'
 import { ref } from 'vue'
-import { chai } from 'globals'
+import LatihanSlots from './components/LatihanSlots.vue'
 
 // const disabled = ref(false)
 
@@ -52,7 +52,12 @@ const check = ref('')
 
   <!-- menggunakan v-model menggunakan input -->
   <!-- <input type="text" v-model="nama" /> -->
+
+  <!--lazy tidak langsung di render -->
   <input type="text" v-model.lazy="nama" />
+
+  <!--  mengubah string ke number-->
+  <input type="text" v-model.lazy.number="nama" />
 
   <p>{{ nama }}</p>
   <br />
@@ -82,6 +87,57 @@ const check = ref('')
       {{ item }}
     </li>
   </ul> -->
+
+  <!-- slot: tempat menyisipkan konten dari komponen parent -->
+  <!-- <MainButton>
+    <p>irfan</p>
+  </MainButton> -->
+
+  <!-- fallback content -->
+  <!-- <MainButton> </MainButton> -->
+
+  <!-- named slot -->
+  <MainButton>
+    <!-- <template #header>
+      <h1>dokel</h1>
+    </template> -->
+    <template #default>
+      <h2>test</h2>
+    </template>
+  </MainButton>
+  <br /><br />
+  <h1>latihan slots</h1>
+  <LatihanSlots>
+    <!-- default slots -->
+    <p>halo, ini dari parent (irfan)</p>
+  </LatihanSlots>
+  <!-- fallback kontent -->
+  <LatihanSlots> </LatihanSlots>
+  <!-- named slot header + default -->
+  <LatihanSlots>
+    <template #header>
+      <h2>judul dari parent</h2>
+    </template>
+    <p>isi utama kartu</p>
+  </LatihanSlots>
+  <!-- header + default + footer -->
+  <LatihanSlots>
+    <template #header>
+      <h3>daftar hobi</h3>
+    </template>
+    <ul>
+      <li>main game</li>
+      <li>berenang</li>
+    </ul>
+    <template #footer>
+      <small>latihan slot footer</small>
+    </template>
+  </LatihanSlots>
+  <!-- conditional slot tanpa header -->
+
+  <LatihanSlots>
+    <p>hanya isi default tanpa header</p>
+  </LatihanSlots>
 </template>
 
 <style></style>

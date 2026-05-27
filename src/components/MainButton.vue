@@ -57,7 +57,7 @@ const availableColor = '#fff'
   <!-- <button :disabled="disabled">{{ props.title }}</button> -->
 
   <!-- mencoba menggunakan class dan style inline dinamis -->
-  <label>ini button</label>
+  <!-- <label>ini button</label> -->
   <button
     v-bind="$attrs"
     :disabled
@@ -65,7 +65,21 @@ const availableColor = '#fff'
     :class="{ disabled: disabled }"
     :style="{ color: disabled ? disableColor : availableColor }"
   >
-    {{ props.title }}
+    <!-- named slots -->
+    <!-- <div>
+      <slot name="header"></slot>
+    </div>
+    <div>
+      <slot>submit</slot>
+    </div> -->
+
+    <!-- conditional slots -->
+    <div v-if="$slots.header">
+      <slot name="header"></slot>
+    </div>
+    <div>
+      <slot>submit</slot>
+    </div>
   </button>
 </template>
 
