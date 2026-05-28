@@ -1,8 +1,9 @@
 <script setup>
 import MainButton from './components/MainButton.vue'
 import LatihanListRendering from './components/LatihanListRendering.vue'
-import { ref } from 'vue'
+import { provide, ref } from 'vue'
 import LatihanSlots from './components/LatihanSlots.vue'
+import CompositionComponent from './components/CompositionComponent.vue'
 
 // const disabled = ref(false)
 
@@ -19,11 +20,24 @@ const increment = (counter) => {
 }
 
 // mencoba form handling
-const nama = ref('')
+const nama = ref('dokel')
 const desc = ref('')
 // const check = ref(false)
 // const check = ref([])
 const check = ref('')
+
+// Provide dan inject
+provide('name', nama)
+// bisa diupdate
+
+function updateNama() {
+  nama.value = 'irfan aqila utama'
+}
+
+provide('name', {
+  nama,
+  updateNama,
+})
 </script>
 
 <template>
@@ -138,6 +152,9 @@ const check = ref('')
   <LatihanSlots>
     <p>hanya isi default tanpa header</p>
   </LatihanSlots>
+
+  <!-- Provide dan inject -->
+  <CompositionComponent />
 </template>
 
 <style></style>

@@ -6,6 +6,8 @@ import App from './App.vue'
 // membuat komponen secara global
 import MainButton from './components/MainButton.vue'
 const app = createApp(App)
+
+app.provide('nameApp', 'Aplikasi Saya')
 app.component('MainButton', MainButton)
 
 app.mount('#app')
