@@ -4,6 +4,7 @@ import LatihanListRendering from './components/LatihanListRendering.vue'
 import { provide, ref } from 'vue'
 import LatihanSlots from './components/LatihanSlots.vue'
 import CompositionComponent from './components/CompositionComponent.vue'
+import eCommerceMini from './components/eCommerceMini.vue'
 
 // const disabled = ref(false)
 
@@ -155,6 +156,12 @@ provide('name', {
 
   <!-- Provide dan inject -->
   <CompositionComponent />
+
+  <br /><br />
+  <hr />
+
+  <!-- Latihan ecomerce mini -->
+  <eCommerceMini />
 </template>
 
 <style></style>
