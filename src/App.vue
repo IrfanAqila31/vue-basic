@@ -162,6 +162,19 @@ provide('name', {
 
   <!-- Latihan ecomerce mini -->
   <eCommerceMini />
+
+  <!-- vue router -->
+
+  <div>
+    <h2>aplikasi vue saya</h2>
+    <nav>
+      <router-link to="/">Home</router-link>
+      <router-link to="/about">About</router-link>
+    </nav>
+    <hr />
+    <!-- tempat komponen Home atau About akan dimunculkan -->
+    <router-view></router-view>
+  </div>
 </template>
 
 <style></style>
