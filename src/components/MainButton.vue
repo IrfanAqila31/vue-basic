@@ -25,7 +25,7 @@ import { useAttrs } from 'vue'
 // defineOptions({ inheritAttrs: false })
 
 const attrs = useAttrs()
-console.log(attrs.style)
+console.log(attrs)
 
 // menggunakan props
 const props = defineProps({
@@ -57,29 +57,15 @@ const availableColor = '#fff'
   <!-- <button :disabled="disabled">{{ props.title }}</button> -->
 
   <!-- mencoba menggunakan class dan style inline dinamis -->
-  <!-- <label>ini button</label> -->
+  <label>ini button</label>
   <button
     v-bind="$attrs"
-    :disabled
+    :disabled="disabled"
     class="button"
     :class="{ disabled: disabled }"
     :style="{ color: disabled ? disableColor : availableColor }"
   >
-    <!-- named slots -->
-    <!-- <div>
-      <slot name="header"></slot>
-    </div>
-    <div>
-      <slot>submit</slot>
-    </div> -->
-
-    <!-- conditional slots -->
-    <div v-if="$slots.header">
-      <slot name="header"></slot>
-    </div>
-    <div>
-      <slot>submit</slot>
-    </div>
+    {{ props.title }}
   </button>
 </template>
 
