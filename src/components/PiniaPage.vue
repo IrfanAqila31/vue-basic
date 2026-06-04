@@ -40,4 +40,5 @@ const store = useLatihanStore()
     <p>email: {{ store.useData.email }}</p>
     <p>kota: {{ store.useData.address.city }}</p>
   </div>
+  <button @click="store.tambahUserPost">kirim data user</button>
 </template>
