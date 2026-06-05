@@ -56,46 +56,104 @@ export const useLatihanStore = defineStore('latihan', () => {
   async function tambahUserPost() {
     // Menyalakan status loading saat proses dimulai
     isiLoading.value = true
-    
+
     // Ini adalah data mentah yang ingin kita kirim dan simpan ke database server
     const dataBaru = {
       name: 'irfan aqila utama',
       username: 'irfan',
       email: 'irfanaqila31@gmail.com',
     }
-    
+
     try {
-      // fetch() digunakan untuk menghubungi server. 
+      // fetch() digunakan untuk menghubungi server.
       // Parameter pertama adalah URL tujuan. Parameter kedua adalah konfigurasi (options).
       const respon = await fetch('https://jsonplaceholder.typicode.com/users', {
         // Karena kita mau menyimpan data baru, method harus diubah menjadi POST
         method: 'POST',
-        
+
         // Headers berfungsi memberi tahu server tipe data apa yang kita kirim
         headers: {
           // Kita memberi tahu server bahwa data yang dikirim berformat JSON
           'Content-Type': 'application/json',
         },
-        
+
         // body adalah tempat kita menaruh data yang dikirim.
         // JSON.stringify mengubah object JavaScript (dataBaru) menjadi teks JSON yang bisa dibaca server
         body: JSON.stringify(dataBaru),
       })
-      
+
       // Mengubah balasan (response) dari server yang berupa JSON kembali menjadi format JavaScript
       const data = await respon.json()
-      
+
       // Menampilkan balasan dari server di console browser.
       // Jika POST sukses, biasanya server mengembalikan data kita beserta "id" baru yang di-generate server
       console.log('berhasil mengirim data balasan dari server', data)
-      
+      // update data dengan data yang baru dikirim
+      useData.value = data
     } catch (error) {
       // Jika terjadi masalah (misal: tidak ada internet atau server mati), blok catch ini akan dijalankan
       console.log('error mengirim data', error)
-      
     } finally {
       // Blok finally akan SELALU dijalankan, entah proses di atas berhasil (try) atau gagal (catch).
       // Di sini kita gunakan untuk mematikan status loading di layar.
+      isiLoading.value = false
+    }
+  }
+
+  async function updateUserPut() {
+    // menyalakan status loading
+    isiLoading.value = true
+    // Ini adalah data mentah yang ingin kita kirim dan simpan ke database server
+
+    const dataUpdate = {
+      id: 1, //harus ada id dari data yang diubah
+      name: 'irfan aqila update',
+      username: 'irfan-update',
+      email: 'irfanupdate@gmail.com',
+    }
+    try {
+      // fetch() digunakan untuk menghubungi server.
+      // Parameter pertama adalah URL tujuan. Parameter kedua adalah konfigurasi (options).
+      const respon = await fetch('https://jsonplaceholder.typicode.com/users/1', {
+        // Karena kita mau menyimpan data baru, method harus diubah menjadi PUT
+        method: 'PUT',
+        // Headers berfungsi memberi tahu server tipe data apa yang kita kirim
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // body adalah tempat kita menaruh data yang dikirim.
+        // JSON.stringify mengubah object JavaScript (dataBaru) menjadi teks JSON yang bisa dibaca server
+        body: JSON.stringify(dataUpdate),
+      })
+      // Mengubah balasan (response) dari server yang berupa JSON kembali menjadi format JavaScript
+      const data = await respon.json()
+      // Menampilkan balasan dari server di console browser.
+      console.log('hasil update data', data)
+      // mengupdate state useData dengan data yang baru saja diupdate
+      useData.value = data
+    } catch (error) {
+      // Jika terjadi masalah (misal: tidak ada internet atau server mati), blok catch ini akan dijalankan
+      console.log('error update data', error)
+    } finally {
+      // Blok finally akan SELALU dijalankan, entah proses di atas berhasil (try) atau gagal (catch).
+      // Di sini kita gunakan untuk mematikan status loading di layar.
+      isiLoading.value = false
+    }
+  }
+
+  async function hapusUserDelete() {
+    // mentalakan status loading
+    isiLoading.value = true
+    try {
+      const respon = await fetch('https://jsonplaceholder.typicode.com/users/1', {
+        method: 'DELETE',
+      })
+      const data = await respon.json()
+      console.log('berhasil delete', data)
+      useData.value = null
+    } catch (error) {
+      console.log('error delete', error)
+    } finally {
       isiLoading.value = false
     }
   }
@@ -112,5 +170,7 @@ export const useLatihanStore = defineStore('latihan', () => {
     isiLoading,
     ambilDataUser,
     tambahUserPost,
+    updateUserPut,
+    hapusUserDelete,
   }
 })

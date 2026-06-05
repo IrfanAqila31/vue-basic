@@ -37,8 +37,10 @@ const store = useLatihanStore()
 
   <div v-if="store.useData" style="margin-top: 15px; padding: 10px; border: 1px solid black">
     <p>nama: {{ store.useData.name }}</p>
+    <p>username: {{ store.useData.username }}</p>
     <p>email: {{ store.useData.email }}</p>
-    <p>kota: {{ store.useData.address.city }}</p>
   </div>
   <button @click="store.tambahUserPost">kirim data user</button>
+  <button @click="store.updateUserPut">update data usaer</button>
+  <button @click="store.hapusUserDelete">hapus user</button>
 </template>
