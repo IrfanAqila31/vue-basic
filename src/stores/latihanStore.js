@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
+import axios from 'axios'
 
 export const useLatihanStore = defineStore('latihan', () => {
   // state data yang awalnya berisi irfan aqila
@@ -158,6 +159,32 @@ export const useLatihanStore = defineStore('latihan', () => {
     }
   }
 
+  // MENGGUNAKAN AXIOS
+  async function ambilDataAxios() {
+    // nyalakan status loading
+    isiLoading.value = true
+    // menggunakan axios GET
+    try {
+      // Dengan Axios, kita tidak perlu lagi melakukan "await respon.json()"
+      // Axios secara otomatis mengubahnya menjadi objek JavaScript di dalam "respon.data"
+      const respon = await axios.get('https://jsonplaceholder.typicode.com/users/1')
+      // respon.data adalah tempat axios menaruh hasil datanya. Kita simpan ke useData.
+      // sama seperti code berikut jika tidak menggunakan axios
+      // const data = await respon.json()
+      // useData.value = data
+      // maka dari itu dalam axios tidak perlu await respon.json() karena otomatis akan mengubahnya menjadi objek JavaScript di dalam "respon.data"
+
+      useData.value = respon.data
+      console.log('berhasil ambil data dengan axios', useData.value)
+    } catch (error) {
+      // menangkap jika error
+      console.log('error ambil data dengan axios', error)
+    } finally {
+      // mematikan status loading
+      isiLoading.value = false
+    }
+  }
+
   // return semua data agar bisa diakses
   return {
     nama,
@@ -172,5 +199,6 @@ export const useLatihanStore = defineStore('latihan', () => {
     tambahUserPost,
     updateUserPut,
     hapusUserDelete,
+    ambilDataAxios,
   }
 })

@@ -43,4 +43,8 @@ const store = useLatihanStore()
   <button @click="store.tambahUserPost">kirim data user</button>
   <button @click="store.updateUserPut">update data usaer</button>
   <button @click="store.hapusUserDelete">hapus user</button>
+  <br />
+  <hr />
+  <h2>latihan menggunakan axios</h2>
+  <button @click="store.ambilDataAxios">ambil data axios</button>
 </template>
