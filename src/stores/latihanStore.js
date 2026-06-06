@@ -185,6 +185,45 @@ export const useLatihanStore = defineStore('latihan', () => {
     }
   }
 
+  async function tambahUserAxios() {
+    // nyalakan loading
+    isiLoading.value = true
+    // menyiapkan data yang akan dikirim
+    const dataBaru = {
+      name: 'irfan aqila utama POST',
+      username: 'irfan-post',
+      email: 'irfanpost@gmail.com',
+    }
+    try {
+      const respon = await axios.post('https://jsonplaceholder.typicode.com/users', dataBaru)
+      // menyimpan data
+      useData.value = respon.data
+      console.log('berhasil tambah data dengan axios', respon.data)
+    } catch (error) {
+      console.log('error tambah data dengan axios', error)
+    } finally {
+      isiLoading.value = false
+    }
+  }
+
+  async function updateUserAxios() {
+    isiLoading.value = true
+    const dataUpdate = {
+      name: 'irfan update',
+      username: 'irfan-update',
+      email: 'irfan-update@gmail.com',
+    }
+    try {
+      const respon = await axios.put('https://jsonplaceholder.typicode.com/users/1', dataUpdate)
+      useData.value = respon.data
+      console.log('berhasil update data dengan axios', respon.data)
+    } catch (error) {
+      console.log('error update axios', error)
+    } finally {
+      isiLoading.value = false
+    }
+  }
+
   // return semua data agar bisa diakses
   return {
     nama,
@@ -200,5 +239,7 @@ export const useLatihanStore = defineStore('latihan', () => {
     updateUserPut,
     hapusUserDelete,
     ambilDataAxios,
+    tambahUserAxios,
+    updateUserAxios,
   }
 })

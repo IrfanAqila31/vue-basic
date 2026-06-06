@@ -47,4 +47,6 @@ const store = useLatihanStore()
   <hr />
   <h2>latihan menggunakan axios</h2>
   <button @click="store.ambilDataAxios">ambil data axios</button>
+  <button @click="store.tambahUserAxios">tambah data axios</button>
+  <button @click="store.updateUserAxios">update data axios</button>
 </template>
