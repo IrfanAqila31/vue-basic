@@ -224,6 +224,26 @@ export const useLatihanStore = defineStore('latihan', () => {
     }
   }
 
+  // menggunakan patch
+  async function updateUserPatchAxios() {
+    // menyalakan loading
+    isiLoading.value = true
+    // menyimpan data
+    const dataPatch = {
+      name: 'patricia servana',
+    }
+    try {
+      const respon = await axios.patch('https://jsonplaceholder.typicode.com/users/1', dataPatch)
+
+      useData.value = respon.data
+      console.log('berhasil patch', respon.data)
+    } catch (error) {
+      console.log('error mengubha data patch', error)
+    } finally {
+      isiLoading.value = false
+    }
+  }
+
   // return semua data agar bisa diakses
   return {
     nama,
@@ -241,5 +261,6 @@ export const useLatihanStore = defineStore('latihan', () => {
     ambilDataAxios,
     tambahUserAxios,
     updateUserAxios,
+    updateUserPatchAxios,
   }
 })

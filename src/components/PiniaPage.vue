@@ -49,4 +49,5 @@ const store = useLatihanStore()
   <button @click="store.ambilDataAxios">ambil data axios</button>
   <button @click="store.tambahUserAxios">tambah data axios</button>
   <button @click="store.updateUserAxios">update data axios</button>
+  <button @click="store.updateUserPatchAxios">update data axios patch</button>
 </template>
