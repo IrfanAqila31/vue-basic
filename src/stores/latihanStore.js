@@ -243,6 +243,20 @@ export const useLatihanStore = defineStore('latihan', () => {
       isiLoading.value = false
     }
   }
+  // untuk delete
+  async function hapusDataDeleteAxios() {
+    // menyalakan loading
+    isiLoading.value = true
+    try {
+      const respon = await axios.delete('https://jsonplaceholder.typicode.com/users/1')
+      useData.value = respon.data
+      console.log('berhasil delete', respon.data)
+    } catch (error) {
+      console.log('error delete axios', error)
+    } finally {
+      isiLoading.value = false
+    }
+  }
 
   // return semua data agar bisa diakses
   return {
@@ -262,5 +276,6 @@ export const useLatihanStore = defineStore('latihan', () => {
     tambahUserAxios,
     updateUserAxios,
     updateUserPatchAxios,
+    hapusDataDeleteAxios,
   }
 })

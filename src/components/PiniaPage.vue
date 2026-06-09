@@ -50,4 +50,5 @@ const store = useLatihanStore()
   <button @click="store.tambahUserAxios">tambah data axios</button>
   <button @click="store.updateUserAxios">update data axios</button>
   <button @click="store.updateUserPatchAxios">update data axios patch</button>
+  <button @click="store.hapusDataDeleteAxios">delete data axios</button>
 </template>
